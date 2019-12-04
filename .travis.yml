@@ -21,3 +21,16 @@ after_success:
   - docker push shajeer257/muti-nginx
   - docker push shajeer257/muti-worker
   - docker push shajeer257/muti-server
+
+deploy:
+  provider: elasticbeanstalk
+  region: ap-south-1
+  app: MutltiDocker
+  env:  Mutltidocker-env
+  bucket_name: elasticbeanstalk-ap-south-1-672289437734
+  bucket_path: MutltiDocker
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: $AWS_SECRET_KEY
